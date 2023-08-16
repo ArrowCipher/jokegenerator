@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Joke Generator</title>
+</head>
+<body>
+  <h1>Random Joke Generator</h1>
+
+  <button id="generate-joke">Generate Joke</button>
+
+  <script>
+    const generateJoke = () => {
+      const joke = getRandomJoke();
+      document.getElementById("joke").innerHTML = joke;
+    };
+
+    const getRandomJoke = () => {
+      // Get a random joke from a joke API.
+      // For example, you could use the following API:
+      // https://icanhazdadjoke.com/api/random
+
+      const jokeAPI = "https://icanhazdadjoke.com/api/random";
+      const response = fetch(jokeAPI);
+      const data = await response.json();
+
+      return data.joke;
+    };
+
+    document.getElementById("generate-joke").addEventListener("click", generateJoke);
+  </script>
+
+  <p id="joke"></p>
+</body>
+</html>
